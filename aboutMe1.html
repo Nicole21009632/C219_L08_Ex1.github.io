@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>About Me!</title>
+    <link href="stylesheet/SS.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background-image: url('images/background.jpg');
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand " href="hotels.php">My Profile</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutMe1.html">Page 1</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutMe2.html">Page 2</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav><br>
+
+    <div class="container-sm bg-white" style="padding: 20px; border-radius: 10px;">
+        <h2>About Me</h2>
+        <hr>
+        <div class="row">
+            <div class="col-sm-4">
+                <img src="images/Me.jpeg" class="img-fluid" />
+            </div>
+
+            <div class="col-sm-8">
+                <div class="stagger"><b>Name: </b> Ang Pei Shan Nicole</div>
+                <div class="stagger"><b>Job Title: </b> Student<br></div>
+                <div class="stagger"><b>Date of Birth: </b> 16 February 2003<br><br></div>
+
+                <div class="stagger">I'm <div class="age"></div> this year!<br><br></div>
+
+                <div class="stagger">
+                    <b>Description: </b> <br>
+
+                    Hi, my name is Ang Pei Shan Nicole, but most people just call me Nicole. I am a Year 2 student
+                    studying in
+                    Republic Polytechnic Singapore and I am someone who always strives to do my best no matter th
+                    circumstance.<br><br>
+
+                    During my time in Republic Polytechnic, I have made achievements which I had never done before, even
+                    achieving the
+                    top spot in my first year! I enjoy taking the programming modules most at my school and will be
+                    graduating in a
+                    years time.<br><br>
+
+                    In my spare time, I enjoy reading books about mysteries and paint as well. On occasion, I will also
+                    go on outings
+                    with my family to East Coast Park where we will cycle together and have a picnic together.<br><br>
+                </div>
+
+                <button class="buttonPlay" type="button">Click Me!</button>
+
+                <form method="POST" action="aboutMe2.html">
+                    <input class="colorChange" type="submit" Value="Next Page" style="background-color: #A091BD;" />
+                </form>
+            </div>
+        </div>
+    </div><br>
+
+    <script>
+        anime({
+            targets: '.age',
+            innerHTML: [0, 19], //start and end values
+            easing: 'easeInOutExpo',
+            round: 1, //rounds off to zero decimal places
+            duration: 2000
+        });
+
+        var colorsExamples = anime.timeline({
+            endDelay: 50,
+            easing: 'easeInOutQuad',
+            direction: 'alternate',
+            loop: true
+        })
+            .add({ targets: '.colorChange', background: '#F8D1D5' }, 0)
+
+        anime({
+            targets: '.stagger',
+            translateX: 0,
+            delay: anime.stagger(500, { easing: 'easeOutQuad' })
+        });
+
+        anime({
+            targets: '.stagger',
+            translateX: 500,
+            loop: 1,
+            direction: 'alternate',
+            easing: 'easeInOutSine',
+            delay: anime.stagger(100)
+        });
+
+        var animation = anime({
+            targets: '.buttonPlay',
+            translateX: 300,
+            scale: 2,
+            easing: 'easeInOutExpo',
+            direction: 'alternate',
+            duration: 2000,
+            loop: true,
+            autoplay: false
+        });
+        
+        document.querySelector('.play').onclick = animation.play;
+        document.querySelector('.pause').onclick = animation.pause;
+        document.querySelector('.restart').onclick = animation.restart;
+    </script>
+</body>
+
+</html>
