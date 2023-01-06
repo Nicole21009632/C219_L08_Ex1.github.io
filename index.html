@@ -27,7 +27,17 @@ and open the template in the editor.
             border: none;
             border-radius: 4px;
         }
-        
+
+        .button {
+            width: 100%;
+            color: black;
+            padding: 5px;
+            border: none;
+            border-radius: 4px;
+            display: block;
+            margin-top: 10px;
+        }
+
         .age {
             font-weight: bold;
             font-size: large;
@@ -66,38 +76,49 @@ and open the template in the editor.
         <hr>
         <div class="row">
             <div class="col-sm-4">
-                <img src="images/Me.jpeg" class="img-fluid" />
+                <img src="images/Me.jpeg" class="img-fluid"/>
+                <div class="controlButtons">
+                    <button class="button" id="play" style="background-color: #F8D1D5;">Play</button>
+                    <button class="button" id="pause" style="background-color: #A091BD;">Pause</button>
+                </div>
             </div>
 
             <div class="col-sm-8">
-                <div class="stagger"><b>Name: </b> Ang Pei Shan Nicole</div>
-                <div class="stagger"><b>Job Title: </b> Student<br></div>
-                <div class="stagger"><b>Date of Birth: </b> 16 February 2003<br><br></div>
+                <div class="buttonPlayPause">
+                    <div class="stagger"><b>Name: </b> Ang Pei Shan Nicole</div>
+                    <div class="stagger"><b>Job Title: </b> Student<br></div>
+                    <div class="stagger"><b>Date of Birth: </b> 16 February 2003<br><br></div>
 
-                I'm <div class="age"></div> this year!<br><br>
+                    I'm <div class="age"></div> this year!<br><br>
 
-                <div class="stagger">
-                    <b>Description: </b> <br>
+                    <div class="stagger">
+                        <b>Description: </b> <br>
 
-                    Hi, my name is Ang Pei Shan Nicole, but most people just call me Nicole. I am a Year 2 student
-                    studying in
-                    Republic Polytechnic Singapore and I am someone who always strives to do my best no matter th
-                    circumstance.<br><br>
+                        Hi, my name is Ang Pei Shan Nicole, but most people just call me Nicole. I am a Year 2 student
+                        studying in
+                        Republic Polytechnic Singapore and I am someone who always strives to do my best no matter th
+                        circumstance.<br><br>
 
-                    During my time in Republic Polytechnic, I have made achievements which I had never done before, even
-                    achieving the
-                    top spot in my first year! I enjoy taking the programming modules most at my school and will be
-                    graduating in a
-                    years time.<br><br>
+                        During my time in Republic Polytechnic, I have made achievements which I had never done before,
+                        even
+                        achieving the
+                        top spot in my first year! I enjoy taking the programming modules most at my school and will be
+                        graduating in a
+                        years time.<br><br>
 
-                    In my spare time, I enjoy reading books about mysteries and paint as well. On occasion, I will also
-                    go on outings
-                    with my family to East Coast Park where we will cycle together and have a picnic together.<br><br>
+                        In my spare time, I enjoy reading books about mysteries and paint as well. On occasion, I will
+                        also
+                        go on outings
+                        with my family to East Coast Park where we will cycle together and have a picnic
+                        together.<br><br>
+                    </div>
                 </div>
 
                 <form method="POST" action="aboutMe2.html">
-                    <input class="colorChange" type="submit" Value="Next Page"/>
+                    <input class="colorChange" type="submit" Value="Next Page" />
                 </form>
+
+                
             </div>
         </div>
     </div><br>
@@ -135,19 +156,18 @@ and open the template in the editor.
         });
 
         var animation = anime({
-            targets: '.buttonPlay',
-            translateX: 300,
-            scale: 2,
-            easing: 'easeInOutExpo',
+            targets: '.buttonPlayPause',
+            translateX: 500,
+            loop: 1,
             direction: 'alternate',
-            duration: 2000,
-            loop: true,
-            autoplay: false
+            easing: 'easeInOutSine',
+            delay: anime.stagger(100),
+            delay: function (el, i) { return i * 100; },
+            autoplay: true
         });
 
-        document.querySelector('.play').onclick = animation.play;
-        document.querySelector('.pause').onclick = animation.pause;
-        document.querySelector('.restart').onclick = animation.restart;
+        document.querySelector('#play').onclick = animation.play;
+        document.querySelector('#pause').onclick = animation.pause;
     </script>
 </body>
 
